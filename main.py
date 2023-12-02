@@ -1,13 +1,17 @@
-from fastapi import FastAPI
+from datetime import datetime
+from enum import Enum
 
-app = FastAPI()
+from fastapi import FastAPI, Request, status
+from pydantic import BaseModel, Field, ValidationError
+from typing import List, Optional
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+
+app = FastAPI(
+    title="Trade App"
+)
 
 
-@app.get("/")
+@app.get('/')
 async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+    return "Hello world"

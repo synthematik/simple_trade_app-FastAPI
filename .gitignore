@@ -2,8 +2,13 @@
 /Scripts/
 __pycache__/
 .venv
-venv/
+virtualvenv/
 ENV/
 /include/
 pyvenv.cfg
 .idea/
+/migrations/
+alembic.ini
+config.py
+.idea
+.env
