@@ -8,7 +8,5 @@ ENV/
 pyvenv.cfg
 .idea/
 /migrations/
-alembic.ini
-config.py
 .idea
 .env
