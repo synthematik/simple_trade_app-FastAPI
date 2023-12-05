@@ -1,19 +1,13 @@
-from auth.auth import auth_backend
-from auth.manager import get_user_manager
-
+from src.auth.auth import auth_backend
 from fastapi import FastAPI, Depends
-from fastapi_users import FastAPIUsers
+from src.auth.models import User
+from src.auth.schemas import UserRead, UserCreate
+from src.auth.auth import fastapi_users
+from src.operations.router import router as router_operation
 
-from models.models import User
-from auth.schemas import UserRead, UserCreate
 
 app = FastAPI(
     title="Trade App"
-)
-
-fastapi_users = FastAPIUsers[User, int](
-    get_user_manager,
-    [auth_backend],
 )
 
 
@@ -33,6 +27,8 @@ app.include_router(
     prefix="/auth",
     tags=["auth"],
 )
+
+app.include_router(router_operation)
 
 
 current_user = fastapi_users.current_user()

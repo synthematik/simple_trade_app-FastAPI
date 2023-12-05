@@ -7,6 +7,6 @@ ENV/
 /include/
 pyvenv.cfg
 .idea/
-/migrations/
 .idea
 .env
+/venv/
