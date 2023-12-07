@@ -1,14 +1,28 @@
+import time
+
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi_cache.decorator import cache
 from sqlalchemy import select, insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.database import get_async_session
 from src.operations.models import Operation
 from src.operations.schemas import OperationCreate
 
+
 router = APIRouter(
     prefix="/operations",
     tags=["Operation"]
 )
+
+
+@router.get("/long_operation")
+@cache(expire=30)
+def get_long_op():
+    """
+    Просто проверка работоспособности redis
+    """
+    time.sleep(2)
+    return "Some text"
 
 
 @router.get("/")
