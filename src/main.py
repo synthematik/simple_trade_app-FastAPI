@@ -5,15 +5,18 @@ from src.auth.schemas import UserRead, UserCreate
 from src.auth.auth import fastapi_users
 from src.operations.router import router as router_operation
 from src.task.router import router as router_task
+from src.pages.router import router as router_pages
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 
 from redis import asyncio as aioredis
-
+from starlette.staticfiles import StaticFiles
 
 app = FastAPI(
     title="Trade App"
 )
+
+app.mount("/static", StaticFiles(directory="src/static"), name="static")
 
 
 @app.get('/')
@@ -38,6 +41,7 @@ app.include_router(router_operation)
 
 app.include_router(router_task)
 
+app.include_router(router_pages)
 
 current_user = fastapi_users.current_user()
 
