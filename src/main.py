@@ -6,6 +6,7 @@ from src.auth.auth import fastapi_users
 from src.operations.router import router as router_operation
 from src.task.router import router as router_task
 from src.pages.router import router as router_pages
+from src.chat.router import router as router_chat
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 
@@ -41,7 +42,11 @@ app.include_router(router_operation)
 
 app.include_router(router_task)
 
+
 app.include_router(router_pages)
+
+
+app.include_router(router_chat)
 
 current_user = fastapi_users.current_user()
 

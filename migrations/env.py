@@ -31,8 +31,9 @@ if config.config_file_name is not None:
 
 from src.auth.models import Base as base_auth
 from src.operations.models import Base as base_operation
+from src.chat.models import Base as base_chat
 
-target_metadata = [base_auth.metadata, base_operation.metadata]
+target_metadata = [base_auth.metadata, base_operation.metadata, base_chat.metadata]
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
