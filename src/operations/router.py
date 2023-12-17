@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.database import get_async_session
 from src.operations.models import Operation
 from src.operations.schemas import OperationCreate, OperationEdit
-from starlette import status
+
 
 router = APIRouter(
     prefix="/operations",
